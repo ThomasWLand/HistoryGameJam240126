@@ -1,0 +1,4 @@
+Vis Studio Code refusing to intellisense Unity?
+0) make sure Visual studio package is installed in package manager
+1) regenerate files with preferences -> external tools -> regnerate project files
+2) right click on the Unity file explorer -> reimport all
