@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public static class GridMVCFactory
+/*
+    Factory that builds the MVC pattern and spits out the controller for the Game Manager to use
+*/
+public static class GridFactory
 {
     public static GridController build(int gridWidth, int gridHeight, float spacingx, 
         float spacingY, Transform parent)

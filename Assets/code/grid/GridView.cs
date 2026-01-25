@@ -1,8 +1,10 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 public interface GridViewDisplay
 {
+    public void Init(int x, int y, GridView view);
     public void UpdateDisplay(GridViewState newViewState);
     public void SetVisible(bool isVisible);
     public void DestroyDisplay();
@@ -15,6 +17,8 @@ public class GridView
     static readonly string displayPrefabPath = "GridDisplayPrefab";
     private int _width, _height;
     private Transform _parentTransform;
+
+    public readonly UnityEvent<Vector2Int> onDisplayComponentClickedEvent = new UnityEvent<Vector2Int>(); //contains coord
 
     public GridView(GridModel model, int gridWidth, int gridHeight, 
         float spacingX, float spacingY, Transform displaysParent)
@@ -41,6 +45,7 @@ public class GridView
                 if(newDisplay.TryGetComponent<GridViewDisplay>(out GridViewDisplay displayComponent))
                 {
                     displays[i,j] = displayComponent;
+                    displayComponent.Init(i,j,this);
                 }
             }
         }
@@ -84,6 +89,11 @@ public class GridView
         {
             display.SetVisible(isVisible);
         }
+    }
+
+    public void OnGridDisplayClicked(int x, int y)
+    {
+        this.onDisplayComponentClickedEvent.Invoke(new Vector2Int(x,y));
     }
 }
 

@@ -6,13 +6,23 @@ of how the sprites and stuff will work, for now its just a gameobject with a
 sprite renderer and we mess with the colour based on state 
 */
 
-public class GridViewDisplayComponent : MonoBehaviour , GridViewDisplay
+public class GridDisplayComponent : MonoBehaviour , GridViewDisplay
 {
     [SerializeField] SpriteRenderer _rnd;
 
     static readonly Color hiddenColour = Color.black;
     static readonly Color missedColour = Color.white;
     static readonly Color hitColour = Color.red;
+
+    private int _x, _y;
+    private GridView _view;
+
+    public void Init(int x, int y, GridView view)
+    {
+        this._x = x;
+        this._y = y;
+        this._view = view;
+    }
 
     public void UpdateDisplay(GridViewState newViewState)
     {
@@ -40,5 +50,10 @@ public class GridViewDisplayComponent : MonoBehaviour , GridViewDisplay
     public void DestroyDisplay()
     {
         Destroy(this.gameObject);
+    }
+
+    void OnMouseDown()
+    {
+        this._view.OnGridDisplayClicked(this._x, this._y);
     }
 }
