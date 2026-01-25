@@ -35,4 +35,6 @@ public class GridController
     {
         this._gridView.DestroyView();
     }
+
+    public GridModel GetModel() => this._gridModel;
 }
