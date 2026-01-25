@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] GameObject intro, mainMenu, settingUI, background;
+    [SerializeField] GameObject[] intro, mainMenu, settingUI, background, game;
     void Awake()
     {
         HideAll();
@@ -12,33 +12,34 @@ public class MainMenuController : MonoBehaviour
 
     void PlayIntro()
     {
-        intro.SetActive(true);
-        mainMenu.SetActive(false);
-        settingUI.SetActive(false);
-
+        SetGroupVisible(intro, true);
+        SetGroupVisible(mainMenu, false);
+        SetGroupVisible(settingUI, false);
+        SetGroupVisible(background, false);
         Invoke("ShowMainMenu", 2);
     }
 
     public void ShowMainMenu()
     {
-        intro.SetActive(false);
-        mainMenu.SetActive(true);
-        settingUI.SetActive(false);
-        background.SetActive(true);
+        SetGroupVisible(intro, false);
+        SetGroupVisible(mainMenu, true);
+        SetGroupVisible(settingUI, false);
+        SetGroupVisible(background, true);
     }
 
     public void ShowSettings()
     {
-        mainMenu.SetActive(false);
-        settingUI.SetActive(true);
+        SetGroupVisible(mainMenu, false);
+        SetGroupVisible(settingUI, true);
     }
     
     void HideAll()
     {
-        intro.SetActive(false);
-        mainMenu.SetActive(false);
-        settingUI.SetActive(false);
-        background.SetActive(false);
+        SetGroupVisible(intro, false);
+        SetGroupVisible(mainMenu, false);
+        SetGroupVisible(settingUI, false);
+        SetGroupVisible(background, false);
+        SetGroupVisible(game, false);
     }
     
     public void PlayGame()
@@ -49,5 +50,13 @@ public class MainMenuController : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    private void SetGroupVisible(GameObject[] group, bool isVisible)
+    {
+        foreach(GameObject gameObject in group)
+        {
+            gameObject.SetActive(isVisible);
+        }
     }
 }
