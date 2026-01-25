@@ -87,6 +87,28 @@ public class GridModel
         this.onGridModelUpdatedEvent.Invoke();
     }
 
+    public void SetOccupied(int xPos, int yPos, bool isOccupied)
+    {
+        bool isOutOfBounds = this._getIsOutOfBounds(xPos, yPos);
+        if(isOutOfBounds)
+        {
+            Debug.LogError("Error: Tried to write out of bounds grid data at: " + xPos + "," + yPos);
+            return;
+        }
+        this._data[xPos,yPos].setIsOccupied(isOccupied);
+    }
+
+    public void SetState(int xPos, int yPos, GridViewState state)
+    {
+        bool isOutOfBounds = this._getIsOutOfBounds(xPos, yPos);
+        if(isOutOfBounds)
+        {
+            Debug.LogError("Error: Tried to write out of bounds grid data at: " + xPos + "," + yPos);
+            return;
+        }
+        this._data[xPos,yPos].setViewState(state);
+    }
+
     private bool _getIsOutOfBounds(int xPos, int yPos)
     {
         return ( 
