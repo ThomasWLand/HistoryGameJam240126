@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
     public Transform gridParent;
     public void Start()
     {
-        GridMVC grid = GridMVCFactory.build(width, height, spacingX, spacingY, gridParent);
-        GridView view = grid.gridView;
+        GridController grid = GridMVCFactory.build(width, height, spacingX, spacingY, gridParent);
 
-        view.UpdateView();
+        grid.UpdateDisplay();
+        grid.SetDisplayVisible(true);
     }
 }

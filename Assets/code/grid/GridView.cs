@@ -1,8 +1,5 @@
-using NUnit.Framework.Constraints;
 using Unity.Mathematics;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
-using UnityEngine.Video;
 
 public interface GridViewDisplay
 {
@@ -17,6 +14,7 @@ public class GridView
     private GridViewDisplay[,] _displays;
     static readonly string displayPrefabPath = "GridDisplayPrefab";
     private int _width, _height;
+    private Transform _parentTransform;
 
     public GridView(GridModel model, int gridWidth, int gridHeight, 
         float spacingX, float spacingY, Transform displaysParent)
@@ -24,6 +22,7 @@ public class GridView
         this._model = model;
         int width = this._width = gridWidth;
         int height = this._height= gridHeight;
+        this._parentTransform = displaysParent;
         GridViewDisplay[,] displays = this._displays = new GridViewDisplay[width, height];
 
         GameObject prefab = Resources.Load(displayPrefabPath) as GameObject;
@@ -74,9 +73,17 @@ public class GridView
         }
     }
 
-    public void SetVisible(int x, int y, bool visible)
+    public void SetGridPointVisible(int x, int y, bool visible)
     {
         this._displays[x,y].SetVisible(visible);
+    }
+
+    public void SetDisplayVisible(bool isVisible)
+    {
+        foreach(GridViewDisplay display in this._displays)
+        {
+            display.SetVisible(isVisible);
+        }
     }
 }
 
