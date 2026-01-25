@@ -16,7 +16,6 @@ public class GridView
     private GridViewDisplay[,] _displays;
     static readonly string displayPrefabPath = "GridDisplayPrefab";
     private int _width, _height;
-    private Transform _parentTransform;
 
     public readonly UnityEvent<Vector2Int> onDisplayComponentClickedEvent = new UnityEvent<Vector2Int>(); //contains coord
 
@@ -26,7 +25,7 @@ public class GridView
         this._model = model;
         int width = this._width = gridWidth;
         int height = this._height= gridHeight;
-        this._parentTransform = displaysParent;
+        model.onGridModelUpdatedEvent.AddListener(this.UpdateView);
         GridViewDisplay[,] displays = this._displays = new GridViewDisplay[width, height];
 
         GameObject prefab = Resources.Load(displayPrefabPath) as GameObject;
@@ -51,7 +50,8 @@ public class GridView
         }
     }
 
-    public void UpdateView()
+    // Called whenever the grid model updates
+    private void UpdateView()
     {
         GridData[,] modelData = this._model.GetAllData();
         int width = this._width;

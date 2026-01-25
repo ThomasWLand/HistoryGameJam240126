@@ -11,6 +11,8 @@ public static class GridFactory
         GridModel model = new GridModel(gridWidth, gridHeight);
         GridView view = new GridView(model, gridWidth, gridHeight, spacingx, spacingY, parent);
         GridController controller = new GridController(view, model);
+
+        model.ResetGrid();
         return controller;
     }
 }

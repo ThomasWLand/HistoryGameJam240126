@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public struct GridData
 {
@@ -13,6 +14,15 @@ public struct GridData
 
     public GridViewState getViewState() => this._viewState;
     public bool getIsOccupied() => this._isOccupied;
+
+    public void setViewState(GridViewState state)
+    {
+        this._viewState = state;
+    }
+    public void setIsOccupied(bool isOccupied)
+    {
+        this._isOccupied = isOccupied;
+    }
 }
 
 public enum GridViewState
@@ -26,11 +36,19 @@ public class GridModel
 {
     private GridData[,] _data;
     private int _width, _height;
+    public readonly UnityEvent onGridModelUpdatedEvent = new UnityEvent(); 
+
     public GridModel(int gridWidth, int gridHeight)
     {
         this._width = gridWidth;
         this._height = gridHeight;
+        ResetGrid();
+    }
 
+    public void ResetGrid()
+    {
+        int gridWidth = this._width;
+        int gridHeight = this._height;
         GridData[,] data = this._data = new GridData[gridWidth, gridHeight];
         for(int i = 0; i < gridWidth; i++)
         {
@@ -39,6 +57,7 @@ public class GridModel
                 data[i,j] = new GridData();
             }
         }
+        this.onGridModelUpdatedEvent.Invoke();
     }
 
     public GridData[,] GetAllData() => this._data;
@@ -65,6 +84,7 @@ public class GridModel
         }
 
         this._data[xPos,yPos] = newData;
+        this.onGridModelUpdatedEvent.Invoke();
     }
 
     private bool _getIsOutOfBounds(int xPos, int yPos)
