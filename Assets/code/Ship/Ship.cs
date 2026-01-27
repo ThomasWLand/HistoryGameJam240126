@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    public int width { get; private set; }
-    public int height { get; private set; }
+
+    public int width;
+    public int height;
     [SerializeField] SpriteRenderer destroyedShipSprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -47,9 +47,29 @@ public class GameManager : MonoBehaviour
         int _placementWidthLocation = UnityEngine.Random.Range(0, width);
         int _placementHeightLocation = UnityEngine.Random.Range(0, height);
 
-        GridData _singleGrid = _grid[_placementWidthLocation, _placementHeightLocation];
 
+        GridData _singleGrid = _grid[_placementWidthLocation, _placementHeightLocation];
         GridModel model = _controller.GetModel();
         print($"{_placementWidthLocation}" + " " + $"{_placementHeightLocation}");
+
+        for (int i = _placementWidthLocation; i < width; i++) 
+        {
+            // can it fit?
+            if ((i + ships[index].width) < width)
+            {
+                _grid[i, _placementHeightLocation].setIsOccupied(true);
+                print($"{ships[index].name}: " + $"{i}" + " " + $"{_placementHeightLocation}");
+            }
+
+            else 
+            {
+                print($"{ships[index].name}: can't fit");
+            }
+
+            for (int j = _placementHeightLocation; j < height; j++)
+            {
+
+            }
+        }
     }
 }

@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 245009019}
   - component: {fileID: 245009018}
   - component: {fileID: 245009017}
+  - component: {fileID: 245009020}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -211,6 +212,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &245009020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245009016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &364745687
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +600,13 @@ MonoBehaviour:
   height: 9
   spacingX: 1
   spacingY: 1
+  numberOfShips: 5
+  ships:
+  - {fileID: 242319028716883817, guid: dfcaca39c6d5381418e7e8e57a2fbffd, type: 3}
+  - {fileID: 5113959350119823730, guid: 2e42813878cbdb84090340ea8c886791, type: 3}
+  - {fileID: 9094817380972178213, guid: faa1c5e955d0ad046aeb65de3e042984, type: 3}
+  - {fileID: 8901804904107964221, guid: ba3b7f493dfacf541b39fbaad8b557af, type: 3}
+  - {fileID: 6900847009546866827, guid: 188eaccd3ad15db45beeb32b59fa1be7, type: 3}
   gridParent: {fileID: 1320749567}
 --- !u!4 &1484854135
 Transform:
