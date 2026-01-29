@@ -18,6 +18,6 @@ public class ReturnToMenuState : GameState
         {
             ui.SetActive(false);
         }
-        this._stateMachine.SetState(menuState);
+        this._setState(menuState);
     }
 }

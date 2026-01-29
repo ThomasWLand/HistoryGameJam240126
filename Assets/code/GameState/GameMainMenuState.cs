@@ -26,8 +26,7 @@ public class GameMainMenuState : GameState
 
     public void PlayGame()
     {
-        GameStateMachine machine = this._stateMachine;
-        machine.SetState(this.gameEnterState);
+        this._setState(this.gameEnterState);
     }
 
     public override void ExitState()
