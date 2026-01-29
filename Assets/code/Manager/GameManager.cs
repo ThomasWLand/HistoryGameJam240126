@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public float spacingY;
     public Transform gridParent;
     private GridController _controller;
-    public void Start()
+    public void BeginGame()
     {
         GenerateGrid();
     }
@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
     {
         this._controller.DestroyGrid();
         GenerateGrid();
+    }
+
+    public void DestroyGrid()
+    {
+        this._controller.DestroyGrid();
     }
 
     private void GenerateGrid()
