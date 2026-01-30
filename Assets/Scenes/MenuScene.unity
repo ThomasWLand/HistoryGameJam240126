@@ -1344,12 +1344,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   ambientSound: {fileID: 1643053887}
-  _soundEmitter: {fileID: 0}
-  shotHit: []
-  shotMiss: []
-  shotCritical: []
-  uiHover: []
-  uiPress: []
+  _soundEmitter: {fileID: 964398520}
+  shotHit:
+  - {fileID: 8300000, guid: 8637938353b36e949b58e078ac079a0a, type: 3}
+  - {fileID: 8300000, guid: 77033c60f90c53d43af398192eeb6eba, type: 3}
+  - {fileID: 8300000, guid: 28951bf8b50406e409fa195e7d257a4c, type: 3}
+  - {fileID: 8300000, guid: c64fdc26c2862d74f8eb011948d80cf6, type: 3}
+  - {fileID: 8300000, guid: 1ad9a5cfe143c7647b6697081a6d8935, type: 3}
+  - {fileID: 8300000, guid: 7d3fc814c5884904996f7947b1fd0097, type: 3}
+  shotMiss:
+  - {fileID: 8300000, guid: deda59abebdce2c45a27818a4fcf32e3, type: 3}
+  - {fileID: 8300000, guid: 060403a23dc83ef46ac96e86a02e65b0, type: 3}
+  - {fileID: 8300000, guid: cf9005149f9d9b945b5af9ae77e6630a, type: 3}
+  - {fileID: 8300000, guid: 2f5a2ad071b4e484f83d5a88224e1d5a, type: 3}
+  - {fileID: 8300000, guid: 6f9ea86652f9b6540914d044651e9e16, type: 3}
+  - {fileID: 8300000, guid: 443c6c98678f41141b31271eac614b85, type: 3}
+  - {fileID: 8300000, guid: beb3e10219edc7c4f934c9f3fd981dbc, type: 3}
+  - {fileID: 8300000, guid: 52afc86c1e2fce245ad103ac615344a9, type: 3}
+  shotCritical:
+  - {fileID: 8300000, guid: 9d6a02fbf679e6547b81be52aa0ceca3, type: 3}
+  - {fileID: 8300000, guid: 4365946c1e139004cb0888cbbd0c4eca, type: 3}
+  - {fileID: 8300000, guid: 444a8d53e665e32418229fa1f66b7fed, type: 3}
+  - {fileID: 8300000, guid: b6f3a169181033c49b6b3674f5d151a6, type: 3}
+  uiHover:
+  - {fileID: 8300000, guid: 1e28186475089624e8ca4b838a5591dc, type: 3}
+  - {fileID: 8300000, guid: 16af42f16da4f9745a77bd1543558ff5, type: 3}
+  - {fileID: 8300000, guid: eee30fad8d74e2b4698f0203dccae263, type: 3}
+  uiPress:
+  - {fileID: 8300000, guid: 1e28186475089624e8ca4b838a5591dc, type: 3}
+  - {fileID: 8300000, guid: 2d5604112c9d30047b4adbf40e2f3692, type: 3}
+  - {fileID: 8300000, guid: f524cf253ffdf1049ad935eac17d4807, type: 3}
+  - {fileID: 8300000, guid: 1e9104d95c18bb44bbd3faf1348f6f4d, type: 3}
+  - {fileID: 8300000, guid: 530120a90a3906a44a35ce846f47bff1, type: 3}
+  - {fileID: 8300000, guid: 7be8d4de67f85854abbb04be78615f37, type: 3}
 --- !u!82 &964398520
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1827,6 +1854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6591cd1edecacad408c7a0d0592df01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverState
+  gameEnterState: {fileID: 2083337740}
 --- !u!1 &1477087182
 GameObject:
   m_ObjectHideFlags: 0
