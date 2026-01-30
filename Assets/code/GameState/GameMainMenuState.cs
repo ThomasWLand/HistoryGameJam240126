@@ -4,9 +4,11 @@ public class GameMainMenuState : GameState
 {
     [SerializeField] GameObject[] intro, mainMenu, settingUI, background;
     public GameState gameEnterState;
+    public CursorController cursorController;
 
     public override void EnterState()
     {
+        cursorController.SetSprite(true);
         ShowMainMenu();
     }
 

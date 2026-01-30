@@ -6,9 +6,11 @@ public class GameEnterState : GameState
     public GameManager gameManager;
     public GameState gamePlayState;
     public GameObject[] gameUI;
+    public CursorController cursorController;
 
     public override void EnterState()
     {
+        cursorController.SetSprite(false);
         foreach(GameObject gameObject in gameUI)
         {
             gameObject.SetActive(true);
