@@ -12,6 +12,15 @@ public abstract class GameState : MonoBehaviour
     public virtual void EnterState(){}
     public virtual void UpdateState(){}
     public virtual void ExitState(){}
+
+    protected void _setState(GameState newState)
+    {
+        GameStateMachine machine = this._stateMachine;
+        if(machine.GetState() == this)
+        {
+            machine.SetState(newState);
+        }
+    }
 }
 
 public class GameStateMachine : MonoBehaviour
@@ -53,4 +62,6 @@ public class GameStateMachine : MonoBehaviour
         newState.EnterState();
         Debug.Log("state changed: " + this._currState.gameObject.name);
     }
+
+    public GameState GetState() => this._currState;
 }

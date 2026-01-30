@@ -16,8 +16,7 @@ public class IntroState : GameState
 
     private void _NextState()
     {
-        GameStateMachine machine = this._stateMachine;
-        machine.SetState(this.mainMenuState);
+        this._setState(mainMenuState);
     }
 
     private void SetGroupVisible(GameObject[] group, bool isVisible)

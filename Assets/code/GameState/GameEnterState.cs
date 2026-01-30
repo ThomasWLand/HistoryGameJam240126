@@ -21,6 +21,6 @@ public class GameEnterState : GameState
 
     private void _startPlayState()
     {
-        this._stateMachine.SetState(gamePlayState);
+        this._setState(gamePlayState);
     }
 }

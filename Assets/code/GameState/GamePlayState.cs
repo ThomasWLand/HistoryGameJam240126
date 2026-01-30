@@ -1,7 +1,16 @@
 
+using UnityEngine;
+
 public class GamePlayState : GameState
 {
-    public GameState gameOverState;
+    public GameOverState gameOverState;
+
+    public override void EnterState()
+    {
+        gameOverState.SetPlayerPassed(Random.Range(0,100 ) > 50);
+        Invoke("_onGameComplete", 5f);
+    }
+
     public override void UpdateState()
     {
         //stub
@@ -11,6 +20,6 @@ public class GamePlayState : GameState
 
     private void _onGameComplete()
     {
-        this._stateMachine.SetState(gameOverState);
+        this._setState(gameOverState);
     }
 }
