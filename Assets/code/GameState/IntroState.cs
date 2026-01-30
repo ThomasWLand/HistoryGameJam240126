@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class IntroState : GameState
 {
-    [SerializeField] GameObject[] intro, mainMenu, settingUI, background;
+    [SerializeField] GameObject[] intro, mainMenu, settingUI, background, title;
     public GameState mainMenuState;
 
     public override void EnterState()
@@ -11,6 +11,7 @@ public class IntroState : GameState
         SetGroupVisible(mainMenu, false);
         SetGroupVisible(settingUI, false);
         SetGroupVisible(background, false);
+        SetGroupVisible(title, false);
         Invoke("_NextState", 2);
     }
 

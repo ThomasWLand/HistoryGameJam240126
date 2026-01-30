@@ -7,8 +7,6 @@ public class GamePlayState : GameState
 
     public override void EnterState()
     {
-        gameOverState.SetPlayerPassed(Random.Range(0,100 ) > 50);
-        Invoke("_onGameComplete", 5f);
     }
 
     public override void UpdateState()
