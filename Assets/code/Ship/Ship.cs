@@ -18,7 +18,7 @@ public class Ship : MonoBehaviour
         
     }
 
-    public void Hit() 
+    public void ShipDestroyed() 
     {
         destroyedShipSprite.enabled = true;
     }
