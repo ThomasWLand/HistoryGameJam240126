@@ -609,6 +609,9 @@ MonoBehaviour:
   - {fileID: 6900847009546866827, guid: 188eaccd3ad15db45beeb32b59fa1be7, type: 3}
   - {fileID: 8901804904107964221, guid: ba3b7f493dfacf541b39fbaad8b557af, type: 3}
   gridParent: {fileID: 1320749567}
+  totalBombs: 10
+  playState: {fileID: 0}
+  bombsRemainingText: {fileID: 0}
 --- !u!4 &1484854135
 Transform:
   m_ObjectHideFlags: 0
@@ -677,17 +680,16 @@ MonoBehaviour:
   - {x: 5, y: 7}
   - {x: 8, y: 5}
   - {x: 2, y: 7}
-  - {x: 2, y: 1}
+  - {x: 2, y: 0}
   - {x: 6, y: 1}
   - {x: 7, y: 5}
   - {x: 0, y: 3}
   - {x: 1, y: 7}
-  - {x: 5, y: 4}
-  - {x: 2, y: 5}
-  - {x: 7, y: 5}
-  - {x: 3, y: 1}
-  - {x: 7, y: 4}
-  _selection: 8
+  - {x: 0, y: 0}
+  - {x: 3, y: 8}
+  - {x: 4, y: 5}
+  - {x: 0, y: 8}
+  - {x: 8, y: 0}
 --- !u!1 &2036639440
 GameObject:
   m_ObjectHideFlags: 0
