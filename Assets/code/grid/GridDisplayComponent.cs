@@ -49,7 +49,10 @@ public class GridDisplayComponent : MonoBehaviour , GridViewDisplay
 
     public void DestroyDisplay()
     {
-        Destroy(this.gameObject);
+        if(this.gameObject)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void OnMouseDown()
