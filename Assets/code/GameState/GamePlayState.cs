@@ -16,7 +16,7 @@ public class GamePlayState : GameState
         //Check if game has completed
     }
 
-    private void _onGameComplete()
+    public void onGameComplete(bool didWin)
     {
         this._setState(gameOverState);
     }

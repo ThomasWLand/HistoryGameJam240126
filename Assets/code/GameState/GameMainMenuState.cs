@@ -38,6 +38,7 @@ public class GameMainMenuState : GameState
         SetGroupVisible(mainMenu, false);
         SetGroupVisible(settingUI, false);
         SetGroupVisible(background, false);
+        SetGroupVisible(title, false);
     }
 
     private void SetGroupVisible(GameObject[] group, bool isVisible)
