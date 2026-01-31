@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 
@@ -17,20 +19,66 @@ public class GameManager : MonoBehaviour
     private GridController _controller;
     private GridData[,] gridData;
     private PresetPositionManager presetManager;
-    private Vector2[] presetPositions; 
+    private Vector2[] presetPositions;
 
-    public void Start()
+    public int totalBombs = 10;
+    private int _bombsRemaining = 10;
+    public GamePlayState playState;
+
+    public TextMeshProUGUI bombsRemainingText;
+
+    bool _isPlaying = false;
+
+    public void BeginGame()
     {
+        this._isPlaying = true;
+        this._bombsRemaining = totalBombs;
+        bombsRemainingText.text = "Bombs Remaining: 10";
         GenerateGrid();
         presetManager = GetComponent<PresetPositionManager>();
 
         ManageSpawning();
     }
 
+    private void _onBombDropped(Vector2Int coord)
+    {
+        if(!this._isPlaying || this._bombsRemaining <= 0)
+        {
+            return;
+        }
+        GridModel model = this._controller.GetModel();
+        GridData newData = model.GetData(coord.x,coord.y);
+        bool isHidden = newData.getViewState() == GridViewState.HIDDEN;
+        bool isOccupied = newData.getIsOccupied();
+        if(!isHidden)
+        {
+            return;
+        }
+
+        this._bombsRemaining--;
+        this._controller.onDisplayComponentClicked(isOccupied, coord);
+        bombsRemainingText.text = "Bombs Remaining: " + this._bombsRemaining;
+        if(this._bombsRemaining == 0)
+        {
+            this._onGameFinished();
+        }
+    }
+
+    private void _onGameFinished()
+    {
+        bool didWin = false;
+        this.playState.onGameComplete(didWin);
+    }
+
     public void ResetGrid()
     {
         this._controller.DestroyGrid();
         GenerateGrid();
+    }
+
+    public void DestroyGrid()
+    {
+        this._controller.DestroyGrid();
     }
 
     private void GenerateGrid()
@@ -42,8 +90,11 @@ public class GameManager : MonoBehaviour
         this._controller = grid;
         gridData = _controller.GetModel().GetAllData();
 
+        GridView view = grid.GetView();
+        view.onDisplayComponentClickedEvent.AddListener(this._onBombDropped);
         grid.SetDisplayVisible(true);
     }
+    public void SetIsPlaying(bool isPlaying) => this._isPlaying = isPlaying;
 
     private void ManageSpawning() 
     {
@@ -79,7 +130,7 @@ public class GameManager : MonoBehaviour
 
                     else 
                     {
-                        Debug.LogError("Two ships are overlapping!");
+                        //Debug.LogError("Two ships are overlapping!");
                     }
                 }
 
@@ -123,7 +174,7 @@ public class GameManager : MonoBehaviour
 
                     else 
                     {
-                        Debug.LogError("Two ships are overlapping!");
+                        //Debug.LogError("Two ships are overlapping!");
                     }
                 }
 
@@ -152,7 +203,7 @@ public class GameManager : MonoBehaviour
 
             else 
             {
-                Debug.LogError($"The position {presetX},{presetY} is not valid!");
+                //Debug.LogError($"The position {presetX},{presetY} is not valid!");
             }
         }
     }    
