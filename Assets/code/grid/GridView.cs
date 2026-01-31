@@ -74,7 +74,10 @@ public class GridView
         GridViewDisplay[,] displays = this._displays;
         foreach(GridViewDisplay display in displays)
         {
-            display.DestroyDisplay();
+            if(display != null)
+            {
+                display.DestroyDisplay();
+            }
         }
     }
 
