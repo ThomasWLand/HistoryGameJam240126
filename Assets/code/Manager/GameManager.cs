@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
         AddShips();
     }
 
+    public void SetIsPlaying(bool isPlaying) => this._isPlaying = isPlaying;
+
     private void AddShips()
     {
         //stub, add ship placing stuffs here

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GamePlayState : GameState
 {
+    public GameManager manager;
     public GameOverState gameOverState;
 
     public override void EnterState()
@@ -18,6 +19,7 @@ public class GamePlayState : GameState
 
     public void onGameComplete(bool didWin)
     {
+        manager.SetIsPlaying(false);
         this._setState(gameOverState);
     }
 }

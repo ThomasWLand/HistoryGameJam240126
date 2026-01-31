@@ -15,6 +15,7 @@ public class GameEnterState : GameState
         {
             gameObject.SetActive(true);
         }
+        gameManager.SetIsPlaying(true);
         gameManager.BeginGame();
         Invoke("_startPlayState", 0.5f);
     }
