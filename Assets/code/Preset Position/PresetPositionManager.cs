@@ -10,9 +10,11 @@ public class PresetPositionManager : MonoBehaviour
     //temp serialized
     private Vector2[] selectedPositions = new Vector2[5];
 
+
     private void Start()
     {
         int _selection = UnityEngine.Random.Range(0, 9);
+        
         print("Selection is: " + _selection + " * 5 is: " + (_selection * 5));
 
         for (int i = 0; i < 5; i++) 

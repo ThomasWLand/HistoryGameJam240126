@@ -63,8 +63,6 @@ public class GameManager : MonoBehaviour
             int swappedHeight = ships[i].width;
             int swappedWidth = ships[i].height;
 
-            //set 
-            //gridData[presetX, presetY].setIsOccupied(true);
 
             if ((presetX + ships[i].width) < width)
             {
@@ -77,15 +75,6 @@ public class GameManager : MonoBehaviour
                     if (gridData[j, presetY].getIsOccupied() == false)
                     {
                         gridData[j, presetY].setIsOccupied(true);
-
-                        if (Math.Round((float)ships[i].width / 2f, MidpointRounding.AwayFromZero) == (j - presetX))
-                        {
-                            //this should on paper mean that middle is selected
-                            halfPointX = (int)Math.Round((float)ships[i].width / 2f, MidpointRounding.AwayFromZero);
-                            halfPointY = presetY;
-
-                            Debug.Log($"X - for {ships[i].name} the halfway point is {halfPointX},{halfPointY}");
-                        }
                     }
 
                     else 
@@ -94,7 +83,28 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
-                Transform parentObject = gridParent.Find($"{presetX},{presetY}");
+                halfPointX = presetX + ships[i].width;
+                switch (ships[i].width) 
+                {
+                    case 2:
+                        halfPointX -= 2;
+                        break;
+                    case 3:
+                        halfPointX -= 2;
+                        break;
+                    case 4:
+                        halfPointX -= 3;
+                        break;
+                    case 5:
+                        halfPointX -= 3;
+                        break;
+                }
+
+
+                halfPointY = presetY;
+                Debug.Log($"X - for {ships[i].name} the halfway point is {halfPointX},{halfPointY}");
+
+                Transform parentObject = gridParent.Find($"{halfPointX},{halfPointY}");
                 Instantiate(ships[i], parentObject);
             }
 
@@ -102,22 +112,13 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log($"Y - {ships[i].name} is occupying position {presetX},{presetY}");
                 Debug.Log($"Y - {ships[i].name} is {presetY + swappedHeight} compared to limit {height - 1}");
-               
+
                 for (int j = presetY; j < (presetY + swappedHeight); j++)
                 {
                     print($"Y was used, placement on grid for {ships[(i)].name} is {presetX}, {j}");
                     if (gridData[presetX, j].getIsOccupied() == false)
                     {
                         gridData[presetX, j].setIsOccupied(true);
-
-                        if (Math.Round((float)swappedHeight / 2f, MidpointRounding.AwayFromZero) == (j - presetY))
-                        {
-                            //this should on paper mean that middle is selected
-                            halfPointX = presetX;
-                            halfPointY = (int)Math.Round((float)swappedHeight / 2f, MidpointRounding.AwayFromZero);
-
-                            Debug.Log($"Y - for {ships[i].name} the halfway point is {halfPointX},{halfPointY}");
-                        }
                     }
 
                     else 
@@ -126,7 +127,25 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
-                
+                halfPointY = presetY + swappedHeight;
+                switch (swappedHeight)
+                {
+                    case 2:
+                        halfPointY -= 2;
+                        break;
+                    case 3:
+                        halfPointY -= 2;
+                        break;
+                    case 4:
+                        halfPointY -= 3;
+                        break;
+                    case 5:
+                        halfPointY -= 3;
+                        break;
+                }
+                halfPointX = presetX;
+                Debug.Log($"Y - for {ships[i].name} the halfway point is {halfPointX},{halfPointY}");
+
                 Transform parentObject = gridParent.Find($"{halfPointX},{halfPointY}");
                 Instantiate(ships[i], parentObject);
             }
