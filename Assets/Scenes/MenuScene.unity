@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 21229544}
   - component: {fileID: 21229545}
+  - component: {fileID: 21229546}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -164,14 +165,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32843c9515baf334fab88e1b7d2fa6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  width: 5
-  height: 5
+  width: 9
+  height: 9
   spacingX: 1
   spacingY: 1
+  numberOfShips: 5
+  ships:
+  - {fileID: 242319028716883817, guid: dfcaca39c6d5381418e7e8e57a2fbffd, type: 3}
+  - {fileID: 5113959350119823730, guid: 2e42813878cbdb84090340ea8c886791, type: 3}
+  - {fileID: 9094817380972178213, guid: faa1c5e955d0ad046aeb65de3e042984, type: 3}
+  - {fileID: 6900847009546866827, guid: 188eaccd3ad15db45beeb32b59fa1be7, type: 3}
+  - {fileID: 8901804904107964221, guid: ba3b7f493dfacf541b39fbaad8b557af, type: 3}
   gridParent: {fileID: 1019759241}
-  totalBombs: 10
+  totalBombs: 25
   playState: {fileID: 2079753201}
   bombsRemainingText: {fileID: 815009091}
+--- !u!114 &21229546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21229543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531bd209e13b1d1428e47c9752e4d591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PresetPositionManager
+  presetPositions:
+  - {x: 8, y: 3}
+  - {x: 3, y: 1}
+  - {x: 4, y: 7}
+  - {x: 4, y: 0}
+  - {x: 7, y: 1}
+  - {x: 3, y: 8}
+  - {x: 8, y: 1}
+  - {x: 6, y: 2}
+  - {x: 3, y: 8}
+  - {x: 2, y: 1}
+  - {x: 1, y: 1}
+  - {x: 4, y: 1}
+  - {x: 7, y: 4}
+  - {x: 0, y: 4}
+  - {x: 1, y: 6}
+  - {x: 5, y: 1}
+  - {x: 2, y: 2}
+  - {x: 5, y: 1}
+  - {x: 1, y: 0}
+  - {x: 8, y: 3}
+  - {x: 6, y: 2}
+  - {x: 1, y: 5}
+  - {x: 5, y: 0}
+  - {x: 1, y: 7}
+  - {x: 3, y: 1}
+  - {x: 4, y: 3}
+  - {x: 7, y: 4}
+  - {x: 3, y: 6}
+  - {x: 5, y: 4}
+  - {x: 2, y: 1}
+  - {x: 1, y: 2}
+  - {x: 6, y: 4}
+  - {x: 3, y: 3}
+  - {x: 0, y: 3}
+  - {x: 2, y: 6}
+  - {x: 3, y: 1}
+  - {x: 4, y: 6}
+  - {x: 5, y: 1}
+  - {x: 7, y: 0}
+  - {x: 2, y: 7}
+  - {x: 6, y: 1}
+  - {x: 4, y: 5}
+  - {x: 2, y: 0}
+  - {x: 5, y: 2}
+  - {x: 1, y: 3}
+  - {x: 5, y: 4}
+  - {x: 2, y: 5}
+  - {x: 7, y: 5}
+  - {x: 3, y: 1}
+  - {x: 7, y: 4}
 --- !u!1 &78674749
 GameObject:
   m_ObjectHideFlags: 0
