@@ -14,7 +14,9 @@ public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
     [SerializeField] AudioSource ambientSound;
-    [SerializeField] AudioSource _soundEmitter;
+
+    private AudioSource[] sources;
+    private int sourceCount = 16, currIndex = 0;
 
     public AudioClip[] shotHit;
     public AudioClip[] shotMiss;
@@ -35,6 +37,18 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
         }
+
+        sources = new AudioSource[sourceCount];
+        currIndex = 0;
+        for(int i = 0; i < sourceCount; i++)
+        {
+            GameObject newSource = new GameObject();
+            newSource.transform.parent = this.transform;
+            newSource.name = "audioChannel" + i;
+            AudioSource component = newSource.AddComponent<AudioSource>();
+            component.playOnAwake = false;
+            sources[i] = component;
+        }
     }
 
     public static void PlaySound(GameSounds sound)
@@ -44,17 +58,17 @@ public class SoundManager : MonoBehaviour
 
     public void PlayGameSound(GameSounds sound)
     {
+        AudioSource source = sources[currIndex];
         AudioClip clip = this._getSound(sound);
-        this._soundEmitter.clip = clip;
-        this._soundEmitter.Play();
+        source.clip = clip;
+        source.Play();
+        currIndex = currIndex >= sourceCount - 1 ? 0 : currIndex + 1;
     }
 
     public void PlayGameSound(int index)
     {
         GameSounds sound = (GameSounds)index;
-        AudioClip clip = this._getSound(sound);
-        this._soundEmitter.clip = clip;
-        this._soundEmitter.Play();
+        this.PlayGameSound(sound);
     }
 
     private AudioClip _getSound(GameSounds sound)
