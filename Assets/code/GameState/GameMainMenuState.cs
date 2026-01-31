@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameMainMenuState : GameState
 {
-    [SerializeField] GameObject[] intro, mainMenu, settingUI, background;
+    [SerializeField] GameObject[] intro, mainMenu, settingUI, background, title;
     public GameState gameEnterState;
     public CursorController cursorController;
 
@@ -18,6 +18,7 @@ public class GameMainMenuState : GameState
         SetGroupVisible(mainMenu, true);
         SetGroupVisible(settingUI, false);
         SetGroupVisible(background, true);
+        SetGroupVisible(title, true);
     }
 
     public void ShowSettings()
