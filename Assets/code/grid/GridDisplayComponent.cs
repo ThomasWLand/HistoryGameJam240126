@@ -10,9 +10,9 @@ public class GridDisplayComponent : MonoBehaviour , GridViewDisplay
 {
     [SerializeField] SpriteRenderer _rnd;
 
-    static readonly Color hiddenColour = Color.black;
-    static readonly Color missedColour = Color.white;
-    static readonly Color hitColour = Color.red;
+    public Color hiddenColour = Color.black;
+    public Color missedColour = Color.white;
+    public Color hitColour = Color.red;
 
     private int _x, _y;
     private GridView _view;

@@ -25,7 +25,6 @@ public class GridController
         newData.setViewState(isOccupied ? GridViewState.HIT : GridViewState.MISSED);
         model.SetData(coord.x,coord.y, newData);
 
-        SoundManager.PlaySound(isOccupied ? GameSounds.SHOT_HIT : GameSounds.SHOT_MISS);
     }
 
     public void DestroyGrid()

@@ -169,6 +169,7 @@ MonoBehaviour:
   height: 9
   spacingX: 1
   spacingY: 1
+  shipScale: 0.45
   numberOfShips: 5
   ships:
   - {fileID: 242319028716883817, guid: dfcaca39c6d5381418e7e8e57a2fbffd, type: 3}
@@ -177,7 +178,7 @@ MonoBehaviour:
   - {fileID: 6900847009546866827, guid: 188eaccd3ad15db45beeb32b59fa1be7, type: 3}
   - {fileID: 8901804904107964221, guid: ba3b7f493dfacf541b39fbaad8b557af, type: 3}
   gridParent: {fileID: 1019759241}
-  totalBombs: 25
+  totalBombs: 50
   playState: {fileID: 2079753201}
   bombsRemainingText: {fileID: 815009091}
 --- !u!114 &21229546
@@ -2745,7 +2746,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 1}
+  m_BackGroundColor: {r: 0.04423283, g: 0.05934285, b: 0.13207549, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3689,7 +3690,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
+  m_Color: {r: 0.047058824, g: 0.0627451, b: 0.13333334, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
