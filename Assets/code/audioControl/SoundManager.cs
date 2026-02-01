@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public enum GameSounds
 {
@@ -48,6 +49,25 @@ public class SoundManager : MonoBehaviour
             AudioSource component = newSource.AddComponent<AudioSource>();
             component.playOnAwake = false;
             sources[i] = component;
+        }
+    }
+
+    private void Start()
+    {
+        //for now lets default the volume to 0.5
+        ambientSound.volume = 0.5f;
+        foreach (AudioSource source in sources) 
+        {
+            source.volume = 0.5f;
+        }
+    }
+
+    public void SetVolume(float volume)
+    {
+        ambientSound.volume = volume;
+        foreach (AudioSource source in sources) 
+        {
+            source.volume = volume;
         }
     }
 

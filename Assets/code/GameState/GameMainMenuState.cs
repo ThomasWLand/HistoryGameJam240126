@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameMainMenuState : GameState
 {
-    [SerializeField] GameObject[] intro, mainMenu, settingUI, background, title;
+    [SerializeField] GameObject[] intro, mainMenu, settingUI, settingBackToMenuUI, volumeUI, background, title;
     public GameState gameEnterState;
     public CursorController cursorController;
 
@@ -16,15 +16,19 @@ public class GameMainMenuState : GameState
     {
         SetGroupVisible(intro, false);
         SetGroupVisible(mainMenu, true);
-        SetGroupVisible(settingUI, false);
+        SetGroupVisible(settingUI, true);
         SetGroupVisible(background, true);
         SetGroupVisible(title, true);
+        SetGroupVisible(settingBackToMenuUI, false);
+        SetGroupVisible(volumeUI, false);
     }
 
     public void ShowSettings()
     {
         SetGroupVisible(mainMenu, false);
         SetGroupVisible(settingUI, true);
+        SetGroupVisible(settingBackToMenuUI, true);
+        SetGroupVisible(volumeUI, true);
     }
 
     public void PlayGame()
@@ -39,6 +43,8 @@ public class GameMainMenuState : GameState
         SetGroupVisible(settingUI, false);
         SetGroupVisible(background, false);
         SetGroupVisible(title, false);
+        SetGroupVisible(settingBackToMenuUI, false);
+        SetGroupVisible(volumeUI, false);
     }
 
     private void SetGroupVisible(GameObject[] group, bool isVisible)
