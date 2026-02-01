@@ -606,7 +606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 143487532857566303, guid: cb11c1280ec232847bb24b81de20501e, type: 3}
+  m_Sprite: {fileID: 8593693958977648313, guid: cea6caf315a7a9b43ac35888ad0e5861, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 922287514677154223, guid: b3dbcb95e73c08b4bb29ded1d2e01322, type: 3}
+  m_Sprite: {fileID: 1611667249, guid: b3dbcb95e73c08b4bb29ded1d2e01322, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -875,7 +875,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4611040791943824151, guid: c2233e13b8fab5640b0d70daf7400134, type: 3}
+  m_Sprite: {fileID: -8930796852914849319, guid: 8aaf1f85c9ff07b438bc11b1569fc30e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1695,9 +1695,9 @@ RectTransform:
   - {fileID: 815009090}
   m_Father: {fileID: 562433856}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -225}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &855535728
@@ -2816,7 +2816,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2071555288105434898, guid: 86869b847361e81409380ddcf1e73d98, type: 3}
+  m_Sprite: {fileID: 1881347555335611325, guid: b82a69ce8b0becb439b67f071c29e898, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3519,7 +3519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4611040791943824151, guid: c2233e13b8fab5640b0d70daf7400134, type: 3}
+  m_Sprite: {fileID: -8930796852914849319, guid: 8aaf1f85c9ff07b438bc11b1569fc30e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
