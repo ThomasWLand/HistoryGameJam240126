@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public int height;
     public float spacingX;
     public float spacingY;
+
+    [Range(0,1)]public float shipScale = 0.45f;
 
     [SerializeField] int numberOfShips;
     [SerializeField] Ship[] ships;
@@ -20,9 +23,10 @@ public class GameManager : MonoBehaviour
     private GridData[,] gridData;
     private PresetPositionManager presetManager;
     private Vector2[] presetPositions;
+    private List<Ship> activeShips = new List<Ship>();
 
-    public int totalBombs = 10;
-    private int _bombsRemaining = 10;
+    public int totalBombs = 40;
+    private int _bombsRemaining;
     public GamePlayState playState;
 
     public TextMeshProUGUI bombsRemainingText;
@@ -33,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         this._isPlaying = true;
         this._bombsRemaining = totalBombs;
-        bombsRemainingText.text = "Bombs Remaining: 10";
+        bombsRemainingText.text = "Bombs Remaining: " + totalBombs;
         GenerateGrid();
         presetManager = GetComponent<PresetPositionManager>();
 
@@ -57,17 +61,45 @@ public class GameManager : MonoBehaviour
 
         this._bombsRemaining--;
         this._controller.onDisplayComponentClicked(isOccupied, coord);
-        bombsRemainingText.text = "Bombs Remaining: " + this._bombsRemaining;
-        if(this._bombsRemaining == 0)
+        if(isOccupied)
         {
-            this._onGameFinished();
+            this._updateShipHits(coord);
+        }
+        else
+        {
+            SoundManager.PlaySound(GameSounds.SHOT_MISS);
+        }
+        bombsRemainingText.text = "Bombs Remaining: " + this._bombsRemaining;
+        bool didWin = this._getAreAllShipsSunk();
+        if(this._bombsRemaining == 0 || didWin)
+        {
+            this._onGameFinished(didWin);
         }
     }
 
-    private void _onGameFinished()
+    private void _updateShipHits(Vector2 coord)
     {
-        bool didWin = false;
-        this.playState.onGameComplete(didWin);
+        foreach(Ship currShip in activeShips)
+        {
+            currShip.OnTileExploded(coord);
+        }
+    }
+
+    private bool _getAreAllShipsSunk()
+    {
+        foreach(Ship currShip in activeShips)
+        {
+            if(currShip.GetIsShipAlive())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void _onGameFinished(bool won)
+    {
+        this.playState.onGameComplete(won);
     }
 
     public void ResetGrid()
@@ -98,6 +130,7 @@ public class GameManager : MonoBehaviour
 
     private void ManageSpawning() 
     {
+        activeShips.Clear();
         presetPositions = presetManager.GetChosenPositions();
 
         for (int i = 0; i < 5; i++)
@@ -114,13 +147,14 @@ public class GameManager : MonoBehaviour
             int swappedHeight = ships[i].width;
             int swappedWidth = ships[i].height;
 
-
+            List<Vector2> shipCoords = new List<Vector2>();
             if ((presetX + ships[i].width) < width)
             {
                 Debug.Log($"X - {ships[i].name} is occupying position {presetX},{presetY}");
                 Debug.Log($"X - {ships[i].name} is {presetX + ships[i].width} compared to limit {width - 1}");
                 for (int j = presetX; j < (presetX + ships[i].width); j++)
                 {
+                    shipCoords.Add(new Vector2(j, presetY));
                     print($"X was used, occupied grid for {ships[i].name} is {j},{presetY}");
 
                     if (gridData[j, presetY].getIsOccupied() == false)
@@ -156,7 +190,11 @@ public class GameManager : MonoBehaviour
                 Debug.Log($"X - for {ships[i].name} the halfway point is {halfPointX},{halfPointY}");
 
                 Transform parentObject = gridParent.Find($"{halfPointX},{halfPointY}");
-                Instantiate(ships[i], parentObject);
+                Ship newShip = Instantiate(ships[i], parentObject);
+                newShip.SetUnhitTiles(shipCoords);
+                activeShips.Add(newShip);
+                newShip.transform.localScale = Vector3.one * shipScale;
+                newShip.transform.eulerAngles = new Vector3(0, 0, 90);
             }
 
             else if ((presetY + swappedHeight) < height)
@@ -166,6 +204,7 @@ public class GameManager : MonoBehaviour
 
                 for (int j = presetY; j < (presetY + swappedHeight); j++)
                 {
+                    shipCoords.Add(new Vector2(presetX, j));
                     print($"Y was used, placement on grid for {ships[(i)].name} is {presetX}, {j}");
                     if (gridData[presetX, j].getIsOccupied() == false)
                     {
@@ -198,7 +237,11 @@ public class GameManager : MonoBehaviour
                 Debug.Log($"Y - for {ships[i].name} the halfway point is {halfPointX},{halfPointY}");
 
                 Transform parentObject = gridParent.Find($"{halfPointX},{halfPointY}");
-                Instantiate(ships[i], parentObject);
+                Ship newShip = Instantiate(ships[i], parentObject);
+                newShip.SetUnhitTiles(shipCoords);
+                activeShips.Add(newShip);
+                newShip.transform.localScale = Vector3.one * shipScale;
+                newShip.transform.eulerAngles = new Vector3(0, 0, 0);
             }
 
             else 

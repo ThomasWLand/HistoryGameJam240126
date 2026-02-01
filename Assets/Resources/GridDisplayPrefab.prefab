@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.102127105, g: 0.16929413, b: 0.4811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -138,6 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridViewDisplayComponent
   _rnd: {fileID: 3822543986825756570}
+  hiddenColour: {r: 0.101960786, g: 0.16862746, b: 0.48235294, a: 1}
+  missedColour: {r: 0.094562136, g: 0.11932375, b: 0.23584908, a: 1}
+  hitColour: {r: 0.48235294, g: 0.123199806, b: 0.10196077, a: 1}
 --- !u!61 &4356096892303659234
 BoxCollider2D:
   m_ObjectHideFlags: 0
