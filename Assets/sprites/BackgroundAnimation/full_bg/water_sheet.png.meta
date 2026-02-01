@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cb11c1280ec232847bb24b81de20501e
+guid: 125419062539515408d5fa6c89cb55a5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 143487532857566303
-    second: Button_Play_0
+      213: -7685192875649139628
+    second: HAGJ_12_UI_sprites_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button_Play_0
+      name: water_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 175
-        width: 512
-        height: 162
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f542ca1a625cdf100800000000000000
-      internalID: 143487532857566303
+      spriteID: 45cf1982cc5b85590800000000000000
+      internalID: -7685192875649139628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac828f6d996f69e4d9576146cbde4912
+      internalID: 98901926
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f0ea634495d44364e9c3b2ef68ed0e55
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +168,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":2048.0,"y":2048.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Button_Play_0: 143487532857566303
+      water_0: -7685192875649139628
+      water_1: 98901926
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

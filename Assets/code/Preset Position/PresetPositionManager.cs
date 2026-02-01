@@ -13,6 +13,11 @@ public class PresetPositionManager : MonoBehaviour
 
     private void Start()
     {
+        SetRandomPositions();
+    }
+
+    private void SetRandomPositions()
+    {
         int _selection = UnityEngine.Random.Range(0, 9);
         
         print("Selection is: " + _selection + " * 5 is: " + (_selection * 5));
@@ -26,6 +31,7 @@ public class PresetPositionManager : MonoBehaviour
 
     public Vector2[] GetChosenPositions() 
     {
+        SetRandomPositions();
         return selectedPositions;
     }
 }

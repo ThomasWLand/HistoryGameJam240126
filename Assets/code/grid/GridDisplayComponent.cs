@@ -10,9 +10,11 @@ public class GridDisplayComponent : MonoBehaviour , GridViewDisplay
 {
     [SerializeField] SpriteRenderer _rnd;
 
-    static readonly Color hiddenColour = Color.black;
-    static readonly Color missedColour = Color.white;
-    static readonly Color hitColour = Color.red;
+    public Color hiddenColour = Color.black;
+    public Color missedColour = Color.white;
+    public Color hitColour = Color.red;
+
+    public GameObject hitMarker, missMarker;
 
     private int _x, _y;
     private GridView _view;
@@ -22,6 +24,8 @@ public class GridDisplayComponent : MonoBehaviour , GridViewDisplay
         this._x = x;
         this._y = y;
         this._view = view;
+        hitMarker.SetActive(false);
+        missMarker.SetActive(false);
     }
 
     public void UpdateDisplay(GridViewState newViewState)
@@ -31,9 +35,11 @@ public class GridDisplayComponent : MonoBehaviour , GridViewDisplay
         {
             case GridViewState.MISSED:
                 targetColour = missedColour;
+                missMarker.SetActive(true);
                 break;
             case GridViewState.HIT:
                 targetColour = hitColour;
+                hitMarker.SetActive(true);
                 break;
             default:
                 targetColour = hiddenColour;

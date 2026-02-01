@@ -54,4 +54,9 @@ public class GameMainMenuState : GameState
             gameObject.SetActive(isVisible);
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
